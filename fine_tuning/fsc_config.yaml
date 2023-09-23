@@ -1,0 +1,36 @@
+# Few-Shot Classification Config
+defaults:
+ - base_fsc
+ - _self_
+# Data
+num_shots: 5000
+base_path: "./data"
+dataset: sst-2
+dataset_seed: 0
+# Reward
+task_lm: csebuetnlp/mT5_m2m_crossSum_enhanced # mbart-large-cc25
+lower_outputs: true
+control_output_length: true
+# LM Adaptor Model
+logit_bias: -10
+# Single Prompt Model
+prompt_length: 5
+prompt_train_batch_size: 32 #16
+prompt_infer_batch_size: 32 #1
+# SQL Module
+reward_shaping_old_min: 0
+reward_shaping_old_max: 1
+reward_shaping_new_min: -20
+reward_shaping_new_max: 80
+top_k: 256
+# Trainer
+train_batch_size: 2
+max_train_steps: 12000
+train_shuffle: false
+eval_steps: 10
+save_steps: 100
+learning_rate: 5e-5
+random_seed: null
+
+is_mask_lm: False
+style_tokenizer: "bert-base-uncased"

@@ -1,0 +1,28 @@
+# Few-Shot Classification Config
+# Data
+num_shots: 5000
+base_path: "../data"
+dataset: sst-3
+dataset_seed: 0
+# Reward
+task_lm: csebuetnlp/mT5_m2m_crossSum_enhanced #"roberta-large"
+is_mask_lm: null
+prompt: "ProfileActivityRequestProgressĠAnge" # ProductsProductsProductsProductsProducts
+
+task_top_k: 10
+style_tokenizer: null
+style_batch_size: 32
+pad_token: ''
+num_repeats: 4
+num_samples: 32
+num_bootstraps: 4
+compute_zscore: true
+lower_outputs: false
+control_output_length: false
+template: '{prompt}"{sentence_1}" "'
+end_punct: '"'
+
+# direction: str = "???"
+max_size: Optional[int] = None
+max_length: Optional[int] = None
+max_length_tokenizer: Optional[str] = None
